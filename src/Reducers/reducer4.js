@@ -1,4 +1,4 @@
-import { GET_USERS } from "../Constants/apiConstants";
+import { GET_USERS, SORT_BY_NAME_ASCENDING, SORT_BY_NAME_DESCENDING } from "../Constants/apiConstants";
 
 export const UsersReducer = (state, action) => {
   let stateCopy = [...state];
@@ -7,6 +7,9 @@ export const UsersReducer = (state, action) => {
     case GET_USERS:
       stateCopy = action.payload;
       break;
+        
+      case SORT_BY_NAME_ASCENDING
+
     default:
       break;
   }
