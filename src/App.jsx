@@ -1,37 +1,37 @@
-import { useEffect } from "react";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect, useReducer } from "react";
 import axios from "axios";
 import "./App.css";
+import { Reducer } from "./Reducers/reducer";
+import { Reducer2 } from "./Reducers/reducer2";
+import { addSquare, deleteSquare } from "./Actions/actionObjects";
+
+import CustomSquares from "./Components/CustomSquares";
+import Names from "./Components/Names";
 
 function App() {
-  const [usersList, setUsersList] = useState([]);
-  const allUsers = useRef([]);
-
-  useEffect(() => {
-    axios;
-    axios.get("https://reqres.in/api/users?page=2").then((res) => {
-      allUsers.current = res.data.data; // visi
-      // atfiltruoti
-      setUsersList(
-        allUsers.current.filter(
-          (user) =>
-            user.first_name === "George" || user.first_name === "Lindsay"
-        )
-      );
-    });
-  }, []);
+  // const [square, dispatchSquare] = useReducer(Reducer, []);
 
   return (
     <>
-      <div>
-        <button onClick={() => setUsersList(allUsers.current)}>Show all</button>
-        {usersList.map((user) => (
-          <div key={user.id}>
-            <img src={user.avatar} alt={user.first_name} />
-            <p>{user.first_name}</p>
-          </div>
-        ))}
-      </div>
+      {/* <button onClick={() => dispatchSquare(addSquare())}>Add square</button>
+      <button onClick={() => dispatchSquare(deleteSquare())}>
+        Delete square
+      </button>
+      {square.map((square, index) => (
+        <div
+          key={index}
+          style={{
+            width: "50px",
+            height: "50px",
+            backgroundColor: "purple",
+            border: "2px solid black",
+            margin: "10px",
+          }}
+        ></div>
+      ))} */}
+
+      <CustomSquares />
+      <Names />
     </>
   );
 }
